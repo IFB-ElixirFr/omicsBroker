@@ -219,7 +219,7 @@ observeEvent(input$dataTable_select, {
 
 
 observeEvent(input$dataTable, {
-  appReac$projectName = unique(as.character(hot_to_r(input$dataTable)[, "Project name" ]))
+  appReac$projectName = unique(hot_to_r(input$dataTable)[, "Project name" ])
   appReac$dataTable =  hot_to_r(input$dataTable)
 })
 
