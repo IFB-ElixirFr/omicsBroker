@@ -13,7 +13,7 @@ BugReports: #
 Maintainer: Thomas DENECKER <thomas.denecker@france-bioinformatique.fr>
 Description: #
 Depends:
-  R (>= 4.0.2)
+  R (>= 4.0.3)
 biocViews:
 Imports:
   ape,
