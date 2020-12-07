@@ -176,7 +176,7 @@ docker run -ti --rm tdenecker/omicsbroker R
 
 ## Documentation
 
-The application comes with a wiki to help you best when using it. It is available [here](https://github.com/IFB-ElixirFr/omicsBroker/wiki). This wiki is currently being written. 
+The application comes with a wiki to help you best when using it. It is available [here](https://github.com/IFB-ElixirFr/omicsBroker/wiki). This wiki is currently being written.
 
 ## Citation
 If you use omicsBroker project, please cite us :
@@ -189,7 +189,10 @@ IFB-ElixirFr , **omicsBroker**, (2020), GitHub repository, https://github.com/IF
 - Hélène Chiapello (ORCID [0000-0001-5102-0632](https://orcid.org/0000-0001-5102-0632))
 - Jacques van Helden (ORCID [0000-0002-8799-8584](https://orcid.org/0000-0002-8799-8584))
 
-This application exploits and modifies a part of Jacques' code available [here](https://github.com/jvanheld/SARS-CoV-2_origins). 
+## Ressources & Documentations 
+
+- Genomic Standards Consortium : [MIxS Checklist v5.0](http://press3.mcs.anl.gov/gensc/files/2020/02/mixs_v5.xlsx) and [GitHub](https://github.com/GenomicsStandardsConsortium/mixs-legacy/blob/master/mixs5/mixs_v5.xlsx)
+- ENA submission : [ENA: Guidelines and Tutorials](https://ena-docs.readthedocs.io/en/latest/index.html)
 
 ## Contributing
 
