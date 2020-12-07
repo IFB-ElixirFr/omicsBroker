@@ -1,0 +1,49 @@
+Package: omicsBroker
+Type: Package
+Title: omicsBroker
+Version: 0.1.0
+Authors@R: c(person("Thomas", "Denecker", email = "thomas.denecker@france-bioinformatique.fr", 
+  role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1421-7641")),
+  person("Jacques", "van Helden", email = "jacques.van-Helden@france-bioinformatique.fr", 
+  role = "ctb", comment = c(ORCID = "0000-0002-8799-8584")),
+  person("Hélène", "Chiapello", email = "helene.chiapello@inrae.fr", 
+  role = "ctb", comment = c(ORCID = "0000-0001-5102-0632")) )
+URL: #
+BugReports: #
+Maintainer: Thomas DENECKER <thomas.denecker@france-bioinformatique.fr>
+Description: #
+Depends:
+  R (>= 3.6.3)
+biocViews:
+Imports:
+  ape,
+  Biostrings,
+  colourpicker,
+  dplyr,
+  ggplot2,
+  knitr,
+  ontologyIndex, 
+  readxl, 
+  reshape2,
+  rmarkdown,
+  rhandsontable,
+  rlist,
+  shiny,
+  shinyalert,
+  shinycssloaders,
+  shinycustomloader,
+  shinydashboard,
+  shinydashboardPlus,
+  shinyhelper,  
+  shinyjs,
+  shinyWidgets,
+  stringr,
+  svglite,
+  tibble,
+  tools, 
+  xlsx,
+  XML
+License: BSD 3-Clause "New" or "Revised" License
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

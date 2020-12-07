@@ -49,10 +49,10 @@ RUN Rscript -e "install.packages(c('ape', 'knitr', 'rlist', 'rJava', 'seqinr', '
 RUN Rscript -e "install.packages('devtools', repos='https://cran.rstudio.com/', dependencies = TRUE)" \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
-## Install packages PIPprofileR
-# ARG INCUBATOR_VER=unknown
-# RUN Rscript -e "library(devtools) ; install_github('IFB-ElixirFr/PIPprofileR')" \
-#    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+## Install packages omicsBroker
+ARG INCUBATOR_VER=unknown
+RUN Rscript -e "library(devtools) ; install_github('IFB-ElixirFr/omicsBroker')" \
+   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 EXPOSE 3838
-# CMD ["R", "-e", "PIPprofileR::shiny_application(port = 3838, host = '0.0.0.0')"]
+CMD ["R", "-e", "omicsBroker::shiny_application(port = 3838, host = '0.0.0.0')"]
