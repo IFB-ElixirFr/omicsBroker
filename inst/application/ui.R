@@ -65,6 +65,7 @@ source("panels/ui/home_ui.R", local = TRUE)
 source("panels/ui/sample_ui.R", local = TRUE)
 source("panels/ui/project_ui.R", local = TRUE)
 source("panels/ui/filesImportPage_ui.R", local = TRUE)
+source("panels/ui/publish_ENA_ui.R", local = TRUE)
 source("panels/ui/about_ui.R", local = TRUE)
 source("panels/ui/adminMetadata_ui.R", local = TRUE)
 source("panels/ui/adminPackages_ui.R", local = TRUE)
@@ -143,6 +144,7 @@ shinyUI(
                            tabItem("samplePage", samplePage),
                            tabItem("project", project),
                            tabItem("filesImportPage", filesImportPage),
+                           tabItem("publish_ENA", publish_ENA),
                            tabItem("adminMetadata", adminMetadata),
                            tabItem("adminPackages", adminPackages),
                            tabItem("myProjects", myProjects),
