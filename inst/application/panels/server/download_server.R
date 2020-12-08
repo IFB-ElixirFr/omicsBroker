@@ -104,8 +104,8 @@ output$dowloadXML_samples <- downloadHandler(
                    newXMLNode("SAMPLE", attrs = c(alias = "XXXXXXXXXXXXX"),
                               newXMLNode("TITLE", "XXXXXXXXXXXXXX"),
                               newXMLNode("SAMPLE_NAME",
-                                         newXMLNode("TAXON_ID", "XXXXXXXXXXXXX"),
-                                         newXMLNode("SCIENTIFIC_NAME", "XXXXXXXXXXXXX")
+                                         newXMLNode("TAXON_ID", taxo[which(taxo[,2] == interDf[i, "Organism"]), 1]),
+                                         newXMLNode("SCIENTIFIC_NAME", interDf[i, "Organism"] )
                               ),
                               newXMLNode("SAMPLE_ATTRIBUTES",
                                          unlist(lapply(which(colnames(interDf) %in% Env), function(j){
@@ -174,24 +174,24 @@ output$dowloadXML_experiment <- downloadHandler(
     xmlText <-
       newXMLNode("EXPERIMENT_SET",
                  unlist(lapply(1:nrow(interDf), function(i){
-                   newXMLNode("EXPERIMENT", attrs = c(alias = createAlias(interDf[i, "Project name"])),
-                              newXMLNode("TITLE", interDf[i, "Project name"]),
+                   newXMLNode("EXPERIMENT", attrs = c(alias = createAlias(interDf[i, "Experiment name"])),
+                              newXMLNode("TITLE", interDf[i, "Experiment name"]),
                               newXMLNode("STUDY_REF", attrs = c(alias = "XXXXXXXXXXXXXXXXXXX")),
                               newXMLNode("DESIGN",
                                          newXMLNode("DESIGN_DESCRIPTION"),
                                          newXMLNode("SAMPLE_DESCRIPTOR", attrs = c(accession = "XXXXXXXXXXXXXXXXXXX")),
                                          newXMLNode("LIBRARY_DESCRIPTOR",
                                                     newXMLNode("LIBRARY_NAME"),
-                                                    newXMLNode("LIBRARY_STRATEGY", "XXXXXXXXXXXXXXXXXXX"),
-                                                    newXMLNode("LIBRARY_SOURCE", "XXXXXXXXXXXXXXXXXXX"),
-                                                    newXMLNode("LIBRARY_SELECTION", "XXXXXXXXXXXXXXXXXXX"),
-                                                    newXMLNode("LIBRARY_LAYOUT", '<PAIRED NOMINAL_LENGTH="250" NOMINAL_SDEV="30"/>'),
-                                                    newXMLNode("LIBRARY_CONSTRUCTION_PROTOCOL", "XXXXXXXXXXXXXXXXXXX")
+                                                    newXMLNode("LIBRARY_STRATEGY", interDf[i, "Library strategy"]),
+                                                    newXMLNode("LIBRARY_SOURCE", interDf[i, "Library source"]),
+                                                    newXMLNode("LIBRARY_SELECTION", interDf[i, "Library selection"]),
+                                                    newXMLNode("LIBRARY_LAYOUT", paste0('<PAIRED NOMINAL_LENGTH="',interDf[i, "Insert size"],'"/>')),
+                                                    newXMLNode("LIBRARY_CONSTRUCTION_PROTOCOL", interDf[i, "Library construction protocol"] )
                                          )
                               ),
                               newXMLNode("PLATFORM",
-                                         newXMLNode("XXXXXXXXXXXXXXXXXXX",
-                                                    newXMLNode("INSTRUMENT_MODEL",interDf[i, "Sequencing method"] )
+                                         newXMLNode(interDf[i, "Platform"],
+                                                    newXMLNode("INSTRUMENT_MODEL",interDf[i, "Instrument"] )
                                          )
                               ),
                               newXMLNode("EXPERIMENT_ATTRIBUTES" ,

@@ -47,7 +47,7 @@ output$files = renderRHandsontable({
       hot_cols(colWidths = 250) %>%
       hot_rows(rowHeights = 30) %>%
       hot_cols(fixedColumnsLeft = 1) %>%
-      hot_col(col = "Experience name", type = "dropdown", source = appReac$projectName)  %>%
+      hot_col(col = "Experience name", type = "dropdown", source = appReac$experimentName)  %>%
       hot_col(col = "md5Server", readOnly = T)  %>%
       hot_col(col = "md5sumCheck", readOnly = T)  %>%
       hot_col(7:11, format = "0%")  %>%

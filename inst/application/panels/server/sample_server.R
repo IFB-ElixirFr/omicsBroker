@@ -31,6 +31,20 @@ packagesItems <- read_excel("./data/mixs_v5.xlsx",
                             sheet = "environmental_packages")
 experiment <- read.csv2("./data/typeLibraryStrategy.tsv", sep = "\t")
 
+taxo = read.csv2("./data/taxo_small.tsv", sep = "\t")
+# taxo = read.csv2("./data/taxo.tsv", sep = "\t")
+
+# https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxcat.zip
+# taxo = read.csv2("names.dmp", sep = "\t", stringsAsFactors = F)
+# taxo = taxo[, c(1,3,5,7)]
+# colnames(taxo) = c("ID", "name_txt", "name", "class")
+# taxo = taxo %>% filter(class == "scientific name")
+# nword = sapply(strsplit(taxo$name_txt, " "), length)
+# taxo = taxo[nword == 2,]
+# taxo[, 2] = gsub("\\[", "" , taxo[, 2])
+# taxo[, 2] = gsub("\\]", "" , taxo[, 2])
+# write.table(taxo[, 1:2], "taxo.tsv",  sep = "\t", quote = F, row.names = F)
+
 #===============================================================================
 # Constants
 #===============================================================================
@@ -163,10 +177,10 @@ output$dataTable = renderRHandsontable({
       }
     } else if(grepl("integer", appReac$metatableFilter$`Value syntax`[i]) | grepl("float", appReac$metatableFilter$`Value syntax`[i])){
       if(is.null(DF)){
-        DF = numeric(nRows)
+        DF = integer(nRows)
       } else {
         DF = cbind.data.frame(DF,
-                              numeric(nRows))
+                              integer(nRows))
       }
     } else {
       if(is.null(DF)){
@@ -190,8 +204,13 @@ output$dataTable = renderRHandsontable({
     hot_cols(colWidths = 250) %>%
     hot_rows(rowHeights = 30) %>%
     hot_cols(fixedColumnsLeft = 1) %>%
-    hot_col(col = "Organism", type = "autocomplete", source = species,
+    hot_col(col = "Organism", type = "dropdown", source = sort(taxo[,2]),
             strict = FALSE) %>%
+    hot_col(col = "Organism", renderer =
+              "function (instance, td, row, col, prop, value, cellProperties) {
+              Handsontable.renderers.TextRenderer.apply(this, arguments);
+                td.style.fontStyle = 'italic';
+            }") %>%
     hot_col(col = "Sequencing method", type = "autocomplete",
             source = experiment$Name,
             strict = FALSE)
@@ -219,7 +238,7 @@ observeEvent(input$dataTable_select, {
 
 
 observeEvent(input$dataTable, {
-  appReac$projectName = unique(hot_to_r(input$dataTable)[, "Project name" ])
+  appReac$experimentName = unique(hot_to_r(input$dataTable)[, 1 ])
   appReac$dataTable =  hot_to_r(input$dataTable)
 })
 
