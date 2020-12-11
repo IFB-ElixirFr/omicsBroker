@@ -70,6 +70,8 @@ source("panels/ui/about_ui.R", local = TRUE)
 source("panels/ui/adminMetadata_ui.R", local = TRUE)
 source("panels/ui/adminChecklists_ui.R", local = TRUE)
 source("panels/ui/myProjects_ui.R", local = TRUE)
+source("panels/ui/helpPage_ui.R", local = TRUE)
+
 
 ################################################################################
 ###                              JS                                        ###
@@ -148,7 +150,8 @@ shinyUI(
                            tabItem("adminMetadata", adminMetadata),
                            tabItem("adminChecklists", adminChecklists),
                            tabItem("myProjects", myProjects),
-                           tabItem("about", about)
+                           tabItem("about", about),
+                           tabItem("helpPage", helpPage)
                          )
     )
   )
