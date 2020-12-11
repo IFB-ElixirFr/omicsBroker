@@ -11,8 +11,8 @@ output$sidebar <- renderUI({
                menuItem("ENA", tabName = "publish_ENA", icon = icon("upload")),
 
                p(style = "text-align: center;margin: 0px; font-weight: bold; background-color: #3c8dbc;padding: 5px;", 'Admin'),
+               menuItem("Checklists", tabName = "adminChecklists", icon = icon("tools")),
                menuItem("Metadata", tabName = "adminMetadata", icon = icon("tools")),
-               menuItem("Packages", tabName = "adminPackages", icon = icon("tools")),
                menuItem("My projects", tabName = "myProjects", icon = icon("tools")),
 
                p(style = "text-align: center;margin: 0px; font-weight: bold; background-color: #3c8dbc;padding: 5px;", 'More'),

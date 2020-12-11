@@ -45,8 +45,9 @@ shinyServer(function(input, output, session) {
   source("panels/server/filesImportPage_server.R", local = TRUE)
   source("panels/server/sideBar_server.R", local = TRUE)
   source("panels/server/adminMetadata_server.R", local = TRUE)
-  source("panels/server/adminPackages_server.R", local = TRUE)
+  source("panels/server/adminChecklists_server.R", local = TRUE)
   source("panels/server/myProjects_server.R", local = TRUE)
+  source("panels/server/publish_ENA_server.R", local = TRUE)
 
   #===========================================================================
   # Session

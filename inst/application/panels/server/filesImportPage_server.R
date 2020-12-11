@@ -15,10 +15,8 @@ observeEvent(input$filesImport,  {
                                            md5sumCheck = "",
                                            expName = "",
                                            M = 0,
-                                           C = 0,
-                                           X = 0,
-                                           E = 0,
-                                           N = 0
+                                           R = 0,
+                                           O = 0
                                          )
         )
       }
@@ -31,10 +29,8 @@ observeEvent(input$filesImport,  {
                                 "md5sumCheck",
                                 "Experience name",
                                 "Mandatory",
-                                "Conditional mandatory",
-                                "Optional",
-                                "Environment-dependent",
-                                "Not applicable"
+                                "Recommended",
+                                "Optional"
                                 )
   }
 })
@@ -50,7 +46,7 @@ output$files = renderRHandsontable({
       hot_col(col = "Experience name", type = "dropdown", source = appReac$experimentName)  %>%
       hot_col(col = "md5Server", readOnly = T)  %>%
       hot_col(col = "md5sumCheck", readOnly = T)  %>%
-      hot_col(7:11, format = "0%")  %>%
+      hot_col(7:9, format = "0%")  %>%
       hot_col(col = "md5sumCheck", renderer =
                 "function (instance, td, row, col, prop, value, cellProperties) {
               Handsontable.renderers.TextRenderer.apply(this, arguments);
@@ -94,13 +90,18 @@ observeEvent(input$files, {
     # Coverage
 
     if(appReac$files[i, 6] != ""){
-      appReac$files[i, 7:11] = unlist(lapply(c("M", "C", "X", "E", "-"), function(x){
-        pos = which(as.character( as.data.frame(appReac$metatableFilter) %>% pull(Requirement)) == x)
-        round(sum(as.character(inter[which(inter[,1] == appReac$files[i, 6] ),pos]) != "") / length(pos) * 100, 2)
+      appReac$files[i, 7:9] = unlist(lapply(c("mandatory", "recommended","optional"), function(x){
+        pos = which(as.character( as.data.frame(appReac$metatableFilter) %>% pull(MANDATORY)) == x)
+        if(length(pos) == 0){
+          return('-')
+        } else {
+          round(sum(as.character(inter[which(inter[,1] == appReac$files[i, 6] ),pos]) != "") / length(pos) * 100, 2)
+        }
+
       }))
 
     } else {
-      appReac$files[i, 7:11] = 0
+      appReac$files[i, 7:9] = 0
     }
 
 

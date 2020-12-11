@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CHECKLIST_SET>
+<CHECKLIST accession="ERC000034" checklistType="Sample">
+          <IDENTIFIERS>
+               <PRIMARY_ID>ERC000034</PRIMARY_ID>
+          </IDENTIFIERS>
+          <DESCRIPTOR>
+               <LABEL>ENA mutagenesis by carcinogen treatment checklist</LABEL>
+               <NAME>ENA mutagenesis by carcinogen treatment checklist</NAME>
+               <DESCRIPTION>Minimum Information required for reporting samples associated with genomic data, derived from carcinogen induced animal tumours. This minimum metadata standard was developed in collaboration with Duncan Odom lab for the Mouse Liver Cancer Evolution Project.</DESCRIPTION>
+               <AUTHORITY>ENA</AUTHORITY>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>Part and developmental stage of organism</NAME>
+                    <DESCRIPTION>Anatomical and developmental descriptions of the sample site or source material</DESCRIPTION>
+                    <FIELD>
+                         <LABEL>tissue_type</LABEL>
+                         <NAME>tissue_type</NAME>
+                         <DESCRIPTION>tissue type from which the sample was obtained</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>mandatory</MANDATORY>
+                         <MULTIPLICITY>single</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>Organism characteristics</NAME>
+                    <DESCRIPTION>Characteristics of the source organism</DESCRIPTION>
+                    <FIELD>
+                         <LABEL>sex</LABEL>
+                         <NAME>sex</NAME>
+                         <DESCRIPTION>sex of the organism from which the sample was obtained</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>mandatory</MANDATORY>
+                         <MULTIPLICITY>single</MULTIPLICITY>
+                    </FIELD>
+                    <FIELD>
+                         <LABEL>date of birth</LABEL>
+                         <NAME>date of birth</NAME>
+                         <DESCRIPTION>Date of birth of subject the sample was derived from.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <DATE_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>single</MULTIPLICITY>
+                    </FIELD>
+                    <FIELD>
+                         <LABEL>date of death</LABEL>
+                         <NAME>date of death</NAME>
+                         <DESCRIPTION>Date of death of subject the sample was derived from.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <DATE_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>single</MULTIPLICITY>
+                    </FIELD>
+                    <FIELD>
+                         <LABEL>diagnosis</LABEL>
+                         <NAME>diagnosis</NAME>
+                         <DESCRIPTION>The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation (http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15220).</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>mandatory</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>Infraspecies information</NAME>
+                    <DESCRIPTION>Formal and informal infraspecies taxonomic information</DESCRIPTION>
+                    <FIELD>
+                         <LABEL>strain</LABEL>
+                         <NAME>strain</NAME>
+                         <DESCRIPTION>Name of the strain from which the sample was obtained.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>mandatory</MANDATORY>
+                         <MULTIPLICITY>single</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>other</NAME>
+                    <FIELD>
+                         <LABEL>tumor grading (OBI_0600002)</LABEL>
+                         <NAME>tumor grading (OBI_0600002)</NAME>
+                         <DESCRIPTION>Determination of the grade (severity/stage) of a tumor sample, used in cancer biology to describe abnormalities/qualities of tumor cells or tissues. Values can be described by terms from NCI Thesaurus.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>treatment</NAME>
+                    <DESCRIPTION>Details of a treatment regime with a treatment agent.</DESCRIPTION>
+                    <FIELD>
+                         <LABEL>treatment agent</LABEL>
+                         <NAME>treatment agent</NAME>
+                         <DESCRIPTION>The name of the treatment agent used.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+                    <FIELD>
+                         <LABEL>treatment dose</LABEL>
+                         <NAME>treatment dose</NAME>
+                         <DESCRIPTION>The dose of the treatment agent used.</DESCRIPTION>
+                         <UNITS>
+                              <UNIT>femtomolar</UNIT>
+                              <UNIT>micromolar</UNIT>
+                              <UNIT>millimolar</UNIT>
+                              <UNIT>molar</UNIT>
+                              <UNIT>nanomolar</UNIT>
+                              <UNIT>picomolar</UNIT>
+                         </UNITS>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+                    <FIELD>
+                         <LABEL>treatment date</LABEL>
+                         <NAME>treatment date</NAME>
+                         <DESCRIPTION>The date of the treatment applied.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <DATE_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>recommended</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+               <FIELD_GROUP restrictionType="Any number or none of the fields">
+                    <NAME>Reference</NAME>
+                    <FIELD>
+                         <LABEL>Further Details</LABEL>
+                         <NAME>Further Details</NAME>
+                         <DESCRIPTION>Reference details related to a sample in form of an URI.</DESCRIPTION>
+                         <FIELD_TYPE>
+                              <TEXT_FIELD/>
+                         </FIELD_TYPE>
+                         <MANDATORY>optional</MANDATORY>
+                         <MULTIPLICITY>multiple</MULTIPLICITY>
+                    </FIELD>
+               </FIELD_GROUP>
+          </DESCRIPTOR>
+     </CHECKLIST>
+</CHECKLIST_SET>
