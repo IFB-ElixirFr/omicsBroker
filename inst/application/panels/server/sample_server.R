@@ -46,10 +46,6 @@ allCLElements = read.csv2("./data/allCLElements.tsv", sep ="\t")
 # Constants
 #===============================================================================
 
-requirement = c("M" ='<span style="color: red;"><i class="fa fa-asterisk"></i></span> Mandatory',
-                "C" = "Conditional mandatory" ,"X" = "optional" ,
-                "E" = "Environment-dependent", "-" = "Not applicable")
-
 #===============================================================================
 # Data base
 #===============================================================================
@@ -115,25 +111,23 @@ output$dataTable = renderRHandsontable({
   if(!is.null(input$dataTable_checkLists)){
     inter = hot_to_r(input$dataTable_checkLists)
 
+    LABELSamples = NULL
     for(p in which(inter[, 1])){
-      message(c("mandatory", "recommended","optional")[c(inter[p,4],
-                                                                          inter[p,5],
-                                                                          inter[p,6])])
-
+      interAccess = as.character(chekcLists_Table %>% mutate(adress = paste0("<a target='_blank' href='",SOURCE,"'>",ACCESSION,"</a>")) %>% filter(adress == inter[p,2]) %>% pull(ACCESSION))
       SubSet = allCLElements %>%
-        filter(CHEKLIST == as.character(chekcLists_Table$ACCESSION[p])) %>%
+        filter(CHEKLIST == interAccess) %>%
         filter(MANDATORY  %in% c("mandatory", "recommended","optional")[c(inter[p,4],
                                                                            inter[p,5],
                                                                            inter[p,6])])
 
+      LABELSamples = c(LABELSamples, as.character(SubSet[, "LABEL"]))
       dataXML = rbind(dataXML,
                       SubSet
       )
 
     }
-
+    appReac$LABELSamples = LABELSamples
   }
-
 
   appReac$metatableFilter = dataXML
 

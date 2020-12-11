@@ -95,20 +95,21 @@ output$dowloadXML_samples <- downloadHandler(
   },
   content = function(con) {
 
-    interDf <- hot_to_r(input$dataTable)
+    interDf = as.data.frame(appReac$dataTable)
+    interDf = interDf[interDf[,1] != "", ]
 
     doc = newXMLDoc()
     xmlText <-
       newXMLNode("SAMPLE_SET",
                  unlist(lapply(1:nrow(interDf), function(i){
-                   newXMLNode("SAMPLE", attrs = c(alias = "XXXXXXXXXXXXX"),
-                              newXMLNode("TITLE", "XXXXXXXXXXXXXX"),
+                   newXMLNode("SAMPLE", attrs = c(alias = createAlias(interDf[i, "Experience name"])),
+                              newXMLNode("TITLE", interDf[i, "Experience name"]),
                               newXMLNode("SAMPLE_NAME",
                                          newXMLNode("TAXON_ID", taxo[which(taxo[,2] == interDf[i, "Organism"]), 1]),
                                          newXMLNode("SCIENTIFIC_NAME", interDf[i, "Organism"] )
                               ),
                               newXMLNode("SAMPLE_ATTRIBUTES",
-                                         unlist(lapply(which(colnames(interDf) %in% Env), function(j){
+                                         unlist(lapply(which(colnames(interDf) %in% appReac$LABELSamples ), function(j){
                                            newXMLNode("SAMPLE_ATTRIBUTE",
                                                       newXMLNode("TAG", colnames(interDf)[j]),
                                                       newXMLNode("VALUE", interDf[i, j])
@@ -158,7 +159,7 @@ output$dowloadXML_submission <- downloadHandler(
 #-------------------------------------------------------------------------------
 
 observeEvent(input$dowloadXML_experiment_init, {
-    shinyjs::runjs("document.getElementById('dowloadXML_experiment').click();")
+  shinyjs::runjs("document.getElementById('dowloadXML_experiment').click();")
 })
 
 
@@ -167,15 +168,22 @@ output$dowloadXML_experiment <- downloadHandler(
     paste('experiment-', Sys.Date(), '.xml', sep='')
   },
   content = function(con) {
-
-    interDf <- hot_to_r(input$dataTable)
+    interDf = as.data.frame(appReac$dataTable)
+    interDf = interDf[interDf[,1] != "", ]
 
     doc = newXMLDoc()
     xmlText <-
       newXMLNode("EXPERIMENT_SET",
                  unlist(lapply(1:nrow(interDf), function(i){
-                   newXMLNode("EXPERIMENT", attrs = c(alias = createAlias(interDf[i, "Experiment name"])),
-                              newXMLNode("TITLE", interDf[i, "Experiment name"]),
+
+                   if(interDf[i, "Library layout"] == "PAIRED"){
+                     ll =  newXMLNode("PAIRED", attrs = c(NOMINAL_LENGTH = interDf[i, "Insert size"]))
+                   } else {
+                     ll =  newXMLNode("SINGLE")
+                   }
+
+                   newXMLNode("EXPERIMENT", attrs = c(alias = createAlias(interDf[i, "Experience name"])),
+                              newXMLNode("TITLE", interDf[i, "Experience name"]),
                               newXMLNode("STUDY_REF", attrs = c(alias = "XXXXXXXXXXXXXXXXXXX")),
                               newXMLNode("DESIGN",
                                          newXMLNode("DESIGN_DESCRIPTION"),
@@ -185,21 +193,22 @@ output$dowloadXML_experiment <- downloadHandler(
                                                     newXMLNode("LIBRARY_STRATEGY", interDf[i, "Library strategy"]),
                                                     newXMLNode("LIBRARY_SOURCE", interDf[i, "Library source"]),
                                                     newXMLNode("LIBRARY_SELECTION", interDf[i, "Library selection"]),
-                                                    newXMLNode("LIBRARY_LAYOUT", paste0('<PAIRED NOMINAL_LENGTH="',interDf[i, "Insert size"],'"/>')),
+                                                    newXMLNode("LIBRARY_LAYOUT", ll),
                                                     newXMLNode("LIBRARY_CONSTRUCTION_PROTOCOL", interDf[i, "Library construction protocol"] )
                                          )
-                              ),
+                              ) ,
                               newXMLNode("PLATFORM",
                                          newXMLNode(interDf[i, "Platform"],
                                                     newXMLNode("INSTRUMENT_MODEL",interDf[i, "Instrument"] )
                                          )
-                              ),
-                              newXMLNode("EXPERIMENT_ATTRIBUTES" ,
-                                         newXMLNode("EXPERIMENT_ATTRIBUTE",
-                                                    newXMLNode("TAG", "XXXXXXXXXXXXXXXXXXX"),
-                                                    newXMLNode("VALUE", "XXXXXXXXXXXXXXXXXXX")
-                                         )
                               )
+                              # ,
+                              # newXMLNode("EXPERIMENT_ATTRIBUTES" ,
+                              #            newXMLNode("EXPERIMENT_ATTRIBUTE",
+                              #                       newXMLNode("TAG", "XXXXXXXXXXXXXXXXXXX"),
+                              #                       newXMLNode("VALUE", "XXXXXXXXXXXXXXXXXXX")
+                              #            )
+                              # )
                    )
                  }))
                  ,
@@ -263,7 +272,11 @@ output$dowloadXML_run <- downloadHandler(
                               newXMLNode("DATA_BLOCK",
                                          newXMLNode("FILES",
                                                     unlist(lapply(1:nrow(subTable), function(j){
-                                                      paste0('<FILE filename="',subTable$Name[j],'" filetype="fastq" checksum_method="MD5" checksum="',subTable$md5Server[j],'"/>')
+                                                      newXMLNode("FILE",attrs = c(filename = subTable$Name[j],
+                                                                                  filetype = "fastq",
+                                                                                  checksum_method = "MD5",
+                                                                                  checksum = subTable$md5Server[j]) )
+
                                                     }) )
                                          )
                               )
