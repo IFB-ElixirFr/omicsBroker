@@ -1,12 +1,10 @@
 output$dataTable_adminMetadata = renderRHandsontable({
-  rhandsontable(metatable,  stretchH = "all") %>%
+  rhandsontable(allCLElements,  stretchH = "all") %>%
     hot_cols(colWidths = 250) %>%
     hot_rows(rowHeights = 30) %>%
-    hot_col(col = c("migs_eu",	"migs_ba",	"migs_pl",	"migs_vi",	"migs_org",
-                    "me",	 "mimarks_s",	"mimarks_c",	"misag",	"mimag",
-                    "miuvig"),
+    hot_col(col = "MANDATORY",
             type = "dropdown",
-            source = c("M", "C", "X", "E", "-"),
+            source = c("mandatory", "optional", "recommended"),
             strict = FALSE)
 })
 
