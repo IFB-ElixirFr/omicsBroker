@@ -1,4 +1,45 @@
-observeEvent(input$publishBtn_ENA, {
+observeEvent(input$publishBtn_ENA_data, {
+  if (input$userID_ENA  == ""  | input$pwID_ENA == "") {
+    sendSweetAlert(
+      session = session,
+      title = "Oops!",
+      text = "Username and password are mandatory !",
+      type = "error"
+    )
+  } else {
+    error = F
+    for (f in appReac$files$Name){
+      message(f)
+      r <- curl_upload(paste0("www/tmp/", nameTmpFolder,"/files/", f),
+                       paste0("ftp://webin2.ebi.ac.uk/", f),
+                       verbose = F,
+                       userpwd = paste0(input$userID_ENA ,":", input$pwID_ENA)
+      )
+      if(r$status_code != 226){
+        error = T
+        sendSweetAlert(
+          session = session,
+          title = "Oops!",
+          text = paste("Error during upload :",f),
+          type = "error"
+        )
+      }
+      message(r)
+    }
+
+    if(!error) {
+      sendSweetAlert(
+        session = session,
+        title = "Success!",
+        text = "All files have been upload ",
+        type = "success"
+      )
+    }
+
+  }
+})
+
+observeEvent(input$publishBtn_ENA_metadata, {
 
   toDelete = NULL
 
@@ -257,7 +298,7 @@ observeEvent(input$publishBtn_ENA, {
         newXMLNode("RUN_SET",
                    unlist(lapply(1:length(experimentNames), function(i){
                      subTable = as.data.frame(as.data.frame(appReac$files) %>% filter(`Experience name` == as.character(experimentNames[i])))
-                     newXMLNode("RUN", attrs = c(alias = paste0('run_', i)),
+                     newXMLNode("RUN", attrs = c(alias = paste0('run_',projectAccession, "_", i)),
                                 newXMLNode("EXPERIMENT_REF", attrs = c(refname = createAlias(experimentNames[i]) )),
                                 newXMLNode("DATA_BLOCK",
                                            newXMLNode("FILES",

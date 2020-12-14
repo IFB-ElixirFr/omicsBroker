@@ -27,11 +27,15 @@ publish_ENA <- fluidPage(
   textInput("userID_ENA", label = HTML(paste("Webin submission account", span(style="color:red", "*")))),
   passwordInput("pwID_ENA", label= HTML(paste("Password", span(style="color:red", "*")))),
 
-  h2("Step 3 - Publish ! "),
-  helpText("It's time to submit on the ENA. A set of checks will be performed to
+  h2("Step 3 - Upload data "),
+  helpText("It's time to submit DATA on the ENA."),
+  actionButton("publishBtn_ENA_data", label = "Upload data", icon = icon("upload")),
+
+  h2("Step 4 - Publish metadata "),
+  helpText("It's time to submit METADATE on the ENA. A set of checks will be performed to
            ensure that no information is missing and that the submission is completed correctly.
            Alerts will be sent to you to guide you in case of problems."),
-  actionButton("publishBtn_ENA", label = "Publish", icon = icon("upload")),
+  actionButton("publishBtn_ENA_metadata", label = "Upload metadata", icon = icon("upload")),
 
   h2("The different files generated"),
   helpText("In this section, you can download separately the different files
