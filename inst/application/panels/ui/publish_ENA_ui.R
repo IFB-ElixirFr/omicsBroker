@@ -21,17 +21,17 @@ publish_ENA <- fluidPage(
     " .Detailed documentation can be found at : ",
     a("https://ena-docs.readthedocs.io/en/latest/submit/general-guide/submissions-portal.html")),
 
-  h2("Step 2 - Fill in your identifiers "),
+  h2("Step 2 - Fill in your identifiers"),
   helpText("Once your account is created, you have a login and a password.
            Both will be required to submit on the ENA. You must fill them in below"),
   textInput("userID_ENA", label = HTML(paste("Webin submission account", span(style="color:red", "*")))),
   passwordInput("pwID_ENA", label= HTML(paste("Password", span(style="color:red", "*")))),
 
-  h2("Step 3 - Upload data "),
+  h2("Step 3 - Upload RAW data"),
   helpText("It's time to submit DATA on the ENA."),
   actionButton("publishBtn_ENA_data", label = "Upload data", icon = icon("upload")),
 
-  h2("Step 4 - Publish metadata "),
+  h2("Step 4 - Upload metadata"),
   helpText("It's time to submit METADATE on the ENA. A set of checks will be performed to
            ensure that no information is missing and that the submission is completed correctly.
            Alerts will be sent to you to guide you in case of problems."),

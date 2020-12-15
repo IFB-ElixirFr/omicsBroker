@@ -25,7 +25,7 @@ project <- fluidPage(
                     h3("People"),
                     h2("Team"),
                     div(style="width:300px",
-                        textInput("projectSet_description", label = "Submitter user name", width = "100%") %>%
+                        textInput("projectSet_submitter", label = "Submitter user name", width = "100%") %>%
                           helper(type = "inline",
                                  title = "Submitter user name",
                                  content = c("This is a <b>text input</b>.",
@@ -44,6 +44,17 @@ project <- fluidPage(
                     textInput("Contact_First", label = "Contact first name"),
                     textInput("Contact_Last", label = "Contact last name")
              )
-           )
+           ),
+
+           fileInput(
+             inputId = "selectPGD",
+             label = "Select a  PGD - Opidor file",
+             multiple = F,
+             accept = NULL,
+             width = NULL,
+             buttonLabel = "Browse...",
+             placeholder = "No file selected"
+           ),
+           actionButton("importPGD","Import PGD")
   )
 )

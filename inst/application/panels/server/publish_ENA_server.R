@@ -7,16 +7,28 @@ observeEvent(input$publishBtn_ENA_data, {
       type = "error"
     )
   } else {
-    error = F
+    appReac$errorTest = F
     for (f in appReac$files$Name){
-      message(f)
-      r <- curl_upload(paste0("www/tmp/", nameTmpFolder,"/files/", f),
-                       paste0("ftp://webin2.ebi.ac.uk/", f),
-                       verbose = F,
-                       userpwd = paste0(input$userID_ENA ,":", input$pwID_ENA)
-      )
-      if(r$status_code != 226){
-        error = T
+      tryCatch( r <- curl_upload(paste0("www/tmp/", nameTmpFolder,"/files/", f),
+                                 paste0("ftp://webin2.ebi.ac.uk/", f),
+                                 verbose = F,
+                                 userpwd = paste0(input$userID_ENA ,":", input$pwID_ENA)),
+
+                error = function(e) {
+                  appReac$errorTest = T
+                  sendSweetAlert(
+                    session = session,
+                    title = "Oops!",
+                    text = paste("Error during upload :",f, "Message : ", e, "Please retry"),
+                    type = "error"
+                  )
+                }, finally = print(f))
+
+
+      if(appReac$errorTest){
+        break
+      } else if(r$status_code != 226){
+        appReac$errorTest = T
         sendSweetAlert(
           session = session,
           title = "Oops!",
@@ -27,7 +39,7 @@ observeEvent(input$publishBtn_ENA_data, {
       message(r)
     }
 
-    if(!error) {
+    if(! appReac$errorTest) {
       sendSweetAlert(
         session = session,
         title = "Success!",

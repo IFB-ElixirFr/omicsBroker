@@ -37,14 +37,8 @@ home <- fluidPage(
              Donec lobortis eros vel lobortis rutrum. Curabitur mollis varius mauris, a pellentesque
              mauris mattis nec. Phasellus a nisi quis nunc maximus interdum."),
 
-           h4("Publication"),
-           p("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elementum enim
-             tincidunt tortor condimentum posuere ac bibendum nisl. Donec vel nulla sed purus
-             varius venenatis eget a risus. Curabitur venenatis arcu in nunc tempus consequat.
-             Nullam vel velit sapien. Etiam dignissim vehicula egestas. Quisque efficitur,
-             lectus a faucibus commodo, sem neque sollicitudin ex, eu dapibus lacus metus sed massa.
-             Donec lobortis eros vel lobortis rutrum. Curabitur mollis varius mauris, a pellentesque
-             mauris mattis nec. Phasellus a nisi quis nunc maximus interdum.")
+           h4("Cite us"),
+           p("IFB-ElixirFr , omicsBroker, (2020), GitHub repository,", a("https://github.com/IFB-ElixirFr/omicsBroker","https://github.com/IFB-ElixirFr/omicsBroker"))
     )
   )
 
