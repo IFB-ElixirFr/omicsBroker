@@ -28,6 +28,7 @@ Imports:
   rmarkdown,
   rhandsontable,
   rlist,
+  rvest,
   shiny,
   shinyalert,
   shinycssloaders,
@@ -42,7 +43,8 @@ Imports:
   tibble,
   tools, 
   xlsx,
-  XML
+  XML, 
+  xml2
 License: BSD 3-Clause "New" or "Revised" License
 Encoding: UTF-8
 LazyData: true

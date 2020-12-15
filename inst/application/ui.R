@@ -9,10 +9,6 @@
 # DockerHub :
 ################################################################################
 
-
-suppressMessages(suppressWarnings(library(xml2)))
-suppressMessages(suppressWarnings(library(rvest)))
-
 ################################################################################
 ###                                Library                                   ###
 ################################################################################
@@ -35,7 +31,6 @@ suppressMessages(suppressWarnings(library(shinycustomloader)))
 # Data treatment
 #===============================================================================
 
-
 suppressMessages(suppressWarnings(library(ontologyIndex)))
 suppressMessages(suppressWarnings(library(readxl)))
 suppressMessages(suppressWarnings(library(xlsx)))
@@ -45,6 +40,8 @@ suppressMessages(suppressWarnings(library(reshape2)))
 suppressMessages(suppressWarnings(library(rhandsontable)))
 suppressMessages(suppressWarnings(library(stringr)))
 suppressMessages(suppressWarnings(library(tibble)))
+suppressMessages(suppressWarnings(library(xml2)))
+suppressMessages(suppressWarnings(library(rvest)))
 
 #===============================================================================
 # Write report
