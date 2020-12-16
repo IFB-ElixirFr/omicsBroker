@@ -19,6 +19,7 @@ Imports:
   ape,
   Biostrings,
   colourpicker,
+  curl, 
   dplyr,
   ggplot2,
   knitr,

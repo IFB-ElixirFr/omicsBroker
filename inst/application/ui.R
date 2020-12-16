@@ -42,6 +42,7 @@ suppressMessages(suppressWarnings(library(stringr)))
 suppressMessages(suppressWarnings(library(tibble)))
 suppressMessages(suppressWarnings(library(xml2)))
 suppressMessages(suppressWarnings(library(rvest)))
+suppressMessages(suppressWarnings(library(curl)))
 
 #===============================================================================
 # Write report
@@ -51,6 +52,7 @@ suppressMessages(suppressWarnings(library(rlist)))
 suppressMessages(suppressWarnings(library(svglite)))
 suppressMessages(suppressWarnings(library(rmarkdown)))
 suppressMessages(suppressWarnings(library(XML)))
+
 
 #===============================================================================
 # Import
