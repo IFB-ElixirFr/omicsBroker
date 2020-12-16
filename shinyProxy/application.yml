@@ -8,10 +8,10 @@ proxy:
   docker:
       internal-networking: true
   specs:
-  - id: PIPprofileR
-    description: PIPprofileR
+  - id: omicsBroker
+    description: omicsBroker
     container-cmd: ["R", "-e", "omicsBroker::shiny_application(port = 3838, host = '0.0.0.0')"]
-    container-image: tdenecker/omicsBroker
+    container-image: tdenecker/omicsbroker
     container-network: sp-network
 logging:
   file:

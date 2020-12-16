@@ -108,10 +108,10 @@ document.getElementById('scrollDiv').scroll({
 
 shinyUI(
 
-  dashboardPage(
+  dashboardPagePlus(
     title = "omicsBroker",
-    header = dashboardHeader(title = "omicsBroker",
-                                 dropdownMenu(icon = icon("question-circle"),badgeStatus =NULL,headerText = "Global information",
+    header = dashboardHeaderPlus(title = "omicsBroker",
+                                 dropdownMenu(icon = icon("question-circle"), badgeStatus = NULL, headerText = "Global information",
                                               messageItem(
                                                 from = "Find our project?",
                                                 message = "Visit our Github!",
