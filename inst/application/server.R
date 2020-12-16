@@ -64,6 +64,7 @@ shinyServer(function(input, output, session) {
   tmpFolderRV <- reactiveValues()
   appReac <- reactiveValues()
   appReac$rowSelec <- -1
+  appReac$login = F
   appReac$files = data.frame(name=character(),
                              size=numeric(),
                              md5Server=character(),

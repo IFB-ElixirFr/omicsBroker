@@ -46,15 +46,20 @@ project <- fluidPage(
              )
            ),
 
-           fileInput(
-             inputId = "selectPGD",
-             label = "Select a  PGD - Opidor file",
-             multiple = F,
-             accept = NULL,
-             width = NULL,
-             buttonLabel = "Browse...",
-             placeholder = "No file selected"
-           ),
-           actionButton("importPGD","Import PGD")
+           box(width = 12,
+             title = "DMP - Opidor (experimental)", status = "warning", solidHeader = TRUE,
+             helpText("Import des informations contenues dans un DMP - Opidor (", a("https://dmp.opidor.fr/"), ")."),
+             fileInput(
+               inputId = "selectPGD",
+               label = "Select a  PGD - Opidor file",
+               multiple = F,
+               accept = NULL,
+               width = NULL,
+               buttonLabel = "Browse...",
+               placeholder = "No file selected"
+             ),
+             actionButton("importPGD","Import PGD")
+           )
+
   )
 )
