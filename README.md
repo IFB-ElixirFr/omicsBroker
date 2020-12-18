@@ -44,6 +44,10 @@ docker run --rm -p 3838:3838 --name omicsBroker tdenecker/omicsbroker
 
 **Note** On linux, it may be necessary to use sudo (`sudo docker run --rm -p 3838:3838 --name omicsBroker tdenecker/omicsbroker`)
 
+##### Step 3 - Open your favorite web browser
+
+omicsBroker is running. You can open a web browser and use it in the following url : [http://localhost:3838/](http://localhost:3838/).
+
 ## omicsBroker & R
 
 omicsBroker is available as an R package. You can install it as follows: 
