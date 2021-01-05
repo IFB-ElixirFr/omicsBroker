@@ -26,66 +26,27 @@ operating system are available [here](https://www.bretfisher.com/installdocker/)
 
 Have you read the "Requirements" section above?
 
-#### omicsBroker project installation
-
-Download the zip file ([here](https://github.com/IFB-ElixirFr/omicsBroker/archive/main.zip)), extract this file and copy the obtained folder where you want on your computer. Note that if you move the folder, the installation procedure will have to be redone.
+#### Run application
 
 **Reminder** : Docker must always be switched on for any installation and use of omicsBroker !
 
-##### Windows installation
+##### Step 1 : Open a terminal 
 
-**IMPORTANT** : omicsBroker needs Docker. It will only be possible to install on **Windows 10**.
+- [Windows](https://youtu.be/uE9WgNr3OjM)
+- [mac OSX](https://www.youtube.com/watch?v=QROX039ckO8)
+- [Linux](https://linuxconfig.org/how-to-open-a-terminal-on-ubuntu-bionic-beaver-18-04-linux)
 
-In this folder, you will find a file named INSTALLATION_WINDOWS.bat. By double clicking on it, the installation will begin. This may take a little time depending on the quality of your internet connection. When the installation is completed, a new file will appear. They allow to launch the omicsBroker applications.
-
-##### Mac OsX installation
-
-**In command line**
-
-[Open a terminal](https://www.youtube.com/watch?v=QROX039ckO8) and run these commands:
+##### Step 2 : Run application
 
 ``` bash
-git clone https://github.com/IFB-ElixirFr/omicsBroker.git
-cd omicsBroker
-sudo ./INSTALLATION_MAC.sh
+docker run --rm -p 3838:3838 --name omicsBroker tdenecker/omicsbroker
 ```
 
-The installation will begin. This may take a little time depending on the quality of your internet connection. When the installation is completed, a new file will appear. They allow to launch the omicsBroker applications. Once the installation is complete, use this command to launch omicsBroker:
+**Note** On linux, it may be necessary to use sudo (`sudo docker run --rm -p 3838:3838 --name omicsBroker tdenecker/omicsbroker`)
 
-``` bash
-./omicsBroker.sh
-```
+##### Step 3 - Open your favorite web browser
 
-**NOTE**
-
-You can also double click the file omicsBroker.sh. In this situation a small manipulation is required (only once). In the Finder, right-click the file omicsBroker.sh and select "Open with" and then "Other...".
-
-You can select the application you want the file to be execute with. In this case it should be the Terminal. To be able to select the Terminal, you have to switch from "Recommended Applications" to "All Applications"  (the Terminal.app application can be found in the Utilities folder).
-
-Check "Always Open With" and after clicking OK you should be able to execute you SHELL script by simply double-clicking it.
-
-##### Linux installation
-
-**In command line**
-
-[Open a terminal](https://linuxconfig.org/how-to-open-a-terminal-on-ubuntu-bionic-beaver-18-04-linux) and run these commands:
-
-```
-git clone https://github.com/IFB-ElixirFr/omicsBroker.git
-cd omicsBroker
-sudo ./INSTALLATION_LINUX.sh
-```
-Once the installation is complete, use this command to launch omicsBroker:
-```
-sudo ./omicsBroker.sh
-```
-
-#### omicsBroker application utilisation
-
-Double click on omicsBroker file (Windows / MacOS X) or launch the command line (Linux) and open your internet browser, typing the following url http://localhost:3838/ and it should work.
-
-**NOTE** (MAC users) : You may need to repeat the same manipulation as for the installation file (only once).
-
+omicsBroker is running. You can open a web browser and use it in the following url : [http://localhost:3838/](http://localhost:3838/).
 
 ## omicsBroker & R
 
