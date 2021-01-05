@@ -29,7 +29,7 @@ samplePage <- fluidPage(
 
            fluidRow(
              column(8,
-                    h3("Table"),
+                    h3("Metadata table"),
                     downloadButton('dowloadExcel', 'Excel'),
                     tags$br(), tags$br(),
                     div(style="height: 700px;",

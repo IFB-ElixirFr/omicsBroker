@@ -93,7 +93,7 @@ output$dataTable_checkLists = renderRHandsontable({
 
     rhandsontable(MAT,
                   stretchH = "all") %>%
-      hot_cols(colWidths = c(25,25,50,25,25,25,25,25, 200)) %>%
+      hot_cols(colWidths = c(25,40,50,25,25,25,25,25, 200)) %>%
       hot_rows(rowHeights = 30) %>%
       hot_col(c(2,3,4, 7:ncol(MAT)), readOnly = T) %>%
       hot_col(2, renderer = htmlwidgets::JS("safeHtmlRenderer"))
@@ -236,7 +236,7 @@ output$accordionArea <- renderUI({
 
              if(mf$VALUE[i] != ""){
                val = paste0('<h2>Value</h2>
-               <p>',gsub("@", " ", mf$VALUE[i]),'</p>')
+               <p>',gsub("@", " ; ", mf$VALUE[i]),'</p>')
              } else {
                val = ""
              }
@@ -249,7 +249,7 @@ output$accordionArea <- renderUI({
              }
 
              if(mf$REGEX_VALUE[i] != ""){
-               reg = paste0('<h2>REGEX</h2>
+               reg = paste0('<h2>Regular expression</h2>
                <p>', mf$REGEX_VALUE[i],'</p>')
              } else {
                reg = ""
